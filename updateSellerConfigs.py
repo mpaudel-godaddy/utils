@@ -18,7 +18,7 @@ def update_resource(resource_id, operations, jwt_token):
     
     if 'supportedGatewayOperations' in data and data['supportedGatewayOperations']:
         existing_operations = data['supportedGatewayOperations'][0].get('operations', [])
-        if "VERIFY" in existing_operations:
+        if operations in existing_operations:
             print(f"Skipping update for {resource_id} as 'VERIFY' is already in the list of operations")
             return
         
@@ -30,8 +30,6 @@ def update_resource(resource_id, operations, jwt_token):
 
     }
     
-    data.setdefault('supportedGatewayOperations', [{}])
-    data['supportedGatewayOperations'][0].setdefault('operations', [])
     data['supportedGatewayOperations'][0]['operations'].append(operations)
     print(f"new request data:\n{json.dumps(data, indent=2)}\n")
     response = requests.put(url, json=data, headers=headers)
