@@ -42,7 +42,7 @@ ENCRYPT_API_BASE_URL = 'http://0.0.0.0:3001/api'  # Local encryption service
 VERIFY_SSL_BASKET_API = False  # WARNING: Only use in controlled test environments
 
 # Authentication Defaults
-DEFAULT_PASSWORD = "eToolsXML4"
+DEFAULT_PASSWORD = ""
 DEFAULT_PIN = "1024"
 AUDIT_CLIENT_IP = "localhost"
 
